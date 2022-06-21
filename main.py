@@ -28,7 +28,7 @@ def analyze_routes(api_key, start_time_u):
 
         if len(route.tasks) > 0:
             route.route_length(api_key)
-            route_dict = {'name': w['name'], 'no_stops': len(route.tasks), 'route_duration': route.route_length_time}
+            route_dict = {'name': w['name'], 'no_stops': route.task_count, 'route_duration': route.route_length_time}
 
             print(route_dict)
 
@@ -44,5 +44,6 @@ def analyze_routes(api_key, start_time_u):
     return route_list
 
 
+# Output format - list of dicts, each dict = 1 driver, 1 row
 if __name__ == '__main__':
     analyze_routes(api_key, start_time_u)
